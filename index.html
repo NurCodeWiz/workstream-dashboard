@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nur's Workstream Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      padding: 40px 28px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+      color: #ffffff;
+    }
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    .dot { width: 13px; height: 13px; border-radius: 50%; }
+    .green  { background: #22c55e; }
+    .yellow { background: #eab308; }
+    .red    { background: #ef4444; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .category {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 26px;
+      border: 1px solid #2a2a2a;
+    }
+    .category-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #222;
+    }
+    .item:last-child { border-bottom: none; }
+
+    .status-dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .item-body { flex: 1; }
+    .item-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e5e5e5;
+      margin-bottom: 4px;
+    }
+    .item-visibility {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .item-issue {
+      font-size: 12px;
+      color: #ef444488;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .item-solution {
+      font-size: 12px;
+      color: #eab30888;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .badge-decision {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      background: #7c3aed22;
+      color: #a78bfa;
+      border: 1px solid #7c3aed55;
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+    }
+    .item-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 6px;
+    }
+    .item-links a {
+      font-size: 10px;
+      color: #38bdf8;
+      text-decoration: none;
+      background: #0ea5e915;
+      border: 1px solid #0ea5e933;
+      border-radius: 4px;
+      padding: 2px 8px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .item-links a:hover {
+      background: #0ea5e940;
+      border-color: #38bdf8;
+      text-decoration: underline;
+    }
+    .link-label {
+      font-size: 10px;
+      color: #666;
+      background: #ffffff08;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 2px 8px;
+      display: inline-block;
+    }
+
+    .summary-bar {
+      max-width: 1400px;
+      margin: 36px auto 0;
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 26px 32px;
+      border: 1px solid #2a2a2a;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .summary-stat { text-align: center; }
+    .summary-stat .num {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .summary-stat .label {
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .num.green-text  { color: #22c55e; }
+    .num.yellow-text { color: #eab308; }
+    .num.red-text    { color: #ef4444; }
+    .num.purple-text { color: #a78bfa; }
+  </style>
+</head>
+<body>
+
+  <h1>Nur's Workstream Dashboard</h1>
+
+  <div class="legend">
+    <div class="legend-item"><div class="dot green"></div> Working</div>
+    <div class="legend-item"><div class="dot yellow"></div> Partial / Needs Improvement</div>
+    <div class="legend-item"><div class="dot red"></div> Not Working</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- RECRUITING -->
+    <div class="category">
+      <div class="category-title">Recruiting</div>
+
+      <div class="item">
+        <div class="status-dot green"></div>
+        <div class="item-body">
+          <div class="item-name">Candidate Intake & Tracking</div>
+          <div class="item-visibility">Airtable · Slack App</div>
+          <div class="item-links">
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/page0CEacOYPr84ut/edit" target="_blank">Airtable 1</a>
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagyYQfVmUUxjfRLy/edit" target="_blank">Airtable 2</a>
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagQgXfSI6xBR2HVM/edit" target="_blank">Airtable 3</a>
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/paga6bcQPuB8bJe3M/edit" target="_blank">Airtable 4</a>
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagbPqHp1OYxieHR8/edit" target="_blank">Airtable 5</a>
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagw5atcQLiQo0v5B/edit" target="_blank">Airtable 6</a>
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagwAzwsc7e3qcr1u" target="_blank">Airtable 7</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot yellow"></div>
+        <div class="item-body">
+          <div class="item-name">Resume Formatting & AI Scoring</div>
+          <div class="item-visibility">Airtable · Master Doc</div>
+          <div class="item-issue">Prompt improvements needed; PDF format issues</div>
+          <div class="item-solution">Improve prompts; request PDF uploads</div>
+          <div class="item-links">
+            <a href="https://docs.google.com/document/d/1NQTMwmgCTltv9qH5PGM16jjKpQ4HmOFrn9MqmteLjhM/edit?tab=t.gew2kmy2pmhm#heading=h.b04sz9h2gp18" target="_blank">Master Doc</a>
+            <a href="https://hiring.luckyrobots.com/candidates" target="_blank">Lucky Hiring</a>
+          </div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot yellow"></div>
+        <div class="item-body">
+          <div class="item-name">Screening & Evaluation</div>
+          <div class="item-visibility">Airtable · Score Spreadsheet</div>
+          <div class="item-issue">Candidate quality visibility insufficient</div>
+          <div class="item-solution">Add summaries</div>
+          <div class="item-links">
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagf4tVO4wgroROa2/edit?Fuo1R%3Asort=eyJwZWxFdGp1b0FsTmZpTEZSRiI6W3siY29sdW1uSWQiOiJmbGREU055aEFxU21CUmlZSSIsImFzY2VuZGluZyI6ZmFsc2V9XX0" target="_blank">Phone Screenings</a>
+            <a href="https://docs.google.com/spreadsheets/d/1itlqAeE1gbaugBFy8hCCXyuqPmMl7URofN86hwLgxaM/edit?gid=0#gid=0" target="_blank">Score Spreadsheet</a>
+          </div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot green"></div>
+        <div class="item-body">
+          <div class="item-name">Candidate Tasks & Scorecards</div>
+          <div class="item-visibility">Airtable</div>
+          <div class="item-links">
+            <a href="https://airtable.com/appUN58Tho8IdtwWr/pagJXOEIIKkyRcuR1/edit" target="_blank">Research Engineer</a>
+            <a href="https://docs.google.com/document/d/19uCo1LCJPvqd4MMTBg4Gp1OtjsIepDcmwdQCXUwrnrw/edit?tab=t.0" target="_blank">Lucky Spider Take-home</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot yellow"></div>
+        <div class="item-body">
+          <div class="item-name">Manager Handoff & Next Steps</div>
+          <div class="item-visibility">Score Spreadsheet · Airtable · Slack</div>
+          <div class="item-issue">Slow feedback loop</div>
+          <div class="item-solution">Designate trusted evaluator; Slack tracker</div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot yellow"></div>
+        <div class="item-body">
+          <div class="item-name">Advisor Sourcing</div>
+          <div class="item-visibility">Airtable</div>
+          <div class="item-issue">Unstructured since Unreal Engine partnership ended</div>
+          <div class="item-solution">Build sourcing pipeline; clarify urgency</div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot green"></div>
+        <div class="item-body">
+          <div class="item-name">Offers & Onboarding</div>
+          <div class="item-visibility">Slack · Docs</div>
+          <div class="item-issue">Handbook timing; offboarding inconsistencies</div>
+          <div class="item-solution">Keep docs current; careful handling</div>
+          <div class="item-links">
+            <a href="https://docs.google.com/document/d/1NQTMwmgCTltv9qH5PGM16jjKpQ4HmOFrn9MqmteLjhM/edit?tab=t.tqtbtvhg236o" target="_blank">Master Doc</a>
+          </div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEOPLE OPS -->
+    <div class="category">
+      <div class="category-title">People Ops</div>
+
+      <div class="item">
+        <div class="status-dot yellow"></div>
+        <div class="item-body">
+          <div class="item-name">Timesheet Tracking</div>
+          <div class="item-visibility">Slack Automation · Sheet</div>
+          <div class="item-issue">Daily submission lapses</div>
+          <div class="item-solution">Confirm with Devrim; deploy Slack app</div>
+          <div class="item-links">
+            <a href="https://www.loom.com/share/f46066702a864f46a741f0d76b0e296c" target="_blank">Worktime Sheet Reminder</a>
+          </div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot yellow"></div>
+        <div class="item-body">
+          <div class="item-name">PTO Tracking</div>
+          <div class="item-visibility">Slack Automation · Sheet</div>
+          <div class="item-issue">Process unclear; absence visibility limited</div>
+          <div class="item-solution">Confirm Slack app with Devrim; add to handbook</div>
+          <div class="item-links">
+            <a href="https://www.loom.com/share/73acea8d652d487b8c6db16cff8aceb0" target="_blank">Loom - PTO</a>
+            <a href="https://docs.google.com/document/d/1NQTMwmgCTltv9qH5PGM16jjKpQ4HmOFrn9MqmteLjhM/edit?tab=t.91l77jya7ryp" target="_blank">Master Doc</a>
+          </div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot green"></div>
+        <div class="item-body">
+          <div class="item-name">Visa / Admin Support</div>
+          <div class="item-visibility">Manual</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot red"></div>
+        <div class="item-body">
+          <div class="item-name">Quarterly Reviews</div>
+          <div class="item-visibility">Sheet</div>
+          <div class="item-issue">No structured process; delays occurred</div>
+          <div class="item-solution">Build process; set 3-month calendar reminder</div>
+          <div class="item-links">
+            <a href="https://docs.google.com/spreadsheets/d/1KduGEDSibA676ayPG52E11aP0pqsRspjhDQJhXQ3Q-8/edit?gid=1874670305#gid=1874670305" target="_blank">Extra Hours by Quarter</a>
+          </div>
+          <span class="badge-decision">Needs Decision</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="status-dot green"></div>
+        <div class="item-body">
+          <div class="item-name">Internal Playbook Documentation</div>
+          <div class="item-visibility">Docs · Slack</div>
+          <div class="item-links">
+            <a href="https://luckyrobots.slack.com/docs/T0608SLB1BP/F08KJAKTSUF" target="_blank">Slack Doc</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINANCE + INTERNAL OPS -->
+    <div style="display: flex; flex-direction: column; gap: 28px;">
+
+      <div class="category">
+        <div class="category-title">Finance</div>
+
+        <div class="item">
+          <div class="status-dot green"></div>
+          <div class="item-body">
+            <div class="item-name">Company Purchases & Registrations</div>
+            <div class="item-visibility">Manual · Mercury</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="status-dot green"></div>
+          <div class="item-body">
+            <div class="item-name">Invoice Confirmations & Tracking</div>
+            <div class="item-visibility">Slack Channel · Artia</div>
+            <div class="item-issue">Frequent Melbourne office reimbursements</div>
+            <div class="item-solution">Submit reimbursements on 1st of month</div>
+            <div class="item-links">
+              <a href="https://luckyrobots.slack.com/archives/C08MP2G7T7Y" target="_blank">Slack Channel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Internal Ops</div>
+
+        <div class="item">
+          <div class="status-dot green"></div>
+          <div class="item-body">
+            <div class="item-name">Meeting Scheduling</div>
+            <div class="item-visibility">iCal · Zoom · Google Calendar</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="status-dot yellow"></div>
+          <div class="item-body">
+            <div class="item-name">Conference Coordination</div>
+            <div class="item-visibility">Manual</div>
+            <div class="item-issue">Lacks standardization</div>
+            <div class="item-solution">Create checklist</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="status-dot yellow"></div>
+          <div class="item-body">
+            <div class="item-name">Ad Hoc Team Support</div>
+            <div class="item-visibility">Not tracked</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="summary-bar">
+    <div class="summary-stat">
+      <div class="num green-text">8</div>
+      <div class="label">Working</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num yellow-text">10</div>
+      <div class="label">Partial</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num red-text">1</div>
+      <div class="label">Not Working</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num purple-text">10</div>
+      <div class="label">Needs Decision</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num" style="color:#fff">19</div>
+      <div class="label">Total Processes</div>
+    </div>
+  </div>
+
+</body>
+</html>
