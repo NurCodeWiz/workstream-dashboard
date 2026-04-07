@@ -171,18 +171,6 @@
       display: inline-block;
     }
 
-    .summary-bar {
-      max-width: 1400px;
-      margin: 36px auto 0;
-      background: #1a1a1a;
-      border-radius: 16px;
-      padding: 26px 32px;
-      border: 1px solid #2a2a2a;
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
     .summary-stat { text-align: center; }
     .summary-stat .num {
       font-size: 36px;
@@ -458,29 +446,33 @@
         </div>
       </div>
 
-    </div>
-  </div>
+      <!-- SUMMARY CARD in right column -->
+      <div class="category">
+        <div class="category-title">Overview</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #2a2a2a; border-radius: 8px; overflow: hidden;">
+          <div class="summary-stat" style="padding: 16px 12px; background: #1a1a1a;">
+            <div class="num green-text">8</div>
+            <div class="label">Working</div>
+          </div>
+          <div class="summary-stat" style="padding: 16px 12px; background: #1a1a1a;">
+            <div class="num yellow-text">10</div>
+            <div class="label">Partial</div>
+          </div>
+          <div class="summary-stat" style="padding: 16px 12px; background: #1a1a1a;">
+            <div class="num red-text">1</div>
+            <div class="label">Not Working</div>
+          </div>
+          <div class="summary-stat" style="padding: 16px 12px; background: #1a1a1a;">
+            <div class="num purple-text">10</div>
+            <div class="label">Needs Decision</div>
+          </div>
+          <div class="summary-stat" style="padding: 16px 12px; background: #1a1a1a; grid-column: span 2;">
+            <div class="num" style="color:#fff">19</div>
+            <div class="label">Total Processes</div>
+          </div>
+        </div>
+      </div>
 
-  <div class="summary-bar">
-    <div class="summary-stat">
-      <div class="num green-text">8</div>
-      <div class="label">Working</div>
-    </div>
-    <div class="summary-stat">
-      <div class="num yellow-text">10</div>
-      <div class="label">Partial</div>
-    </div>
-    <div class="summary-stat">
-      <div class="num red-text">1</div>
-      <div class="label">Not Working</div>
-    </div>
-    <div class="summary-stat">
-      <div class="num purple-text">10</div>
-      <div class="label">Needs Decision</div>
-    </div>
-    <div class="summary-stat">
-      <div class="num" style="color:#fff">19</div>
-      <div class="label">Total Processes</div>
     </div>
   </div>
 
