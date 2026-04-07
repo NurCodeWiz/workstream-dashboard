@@ -41,21 +41,10 @@
 
     .grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 28px;
       max-width: 1400px;
       margin: 0 auto;
-      align-items: stretch;
-    }
-    .right-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .right-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
       align-items: start;
     }
 
@@ -182,6 +171,18 @@
       display: inline-block;
     }
 
+    .summary-bar {
+      max-width: 1400px;
+      margin: 36px auto 0;
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 26px 32px;
+      border: 1px solid #2a2a2a;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .summary-stat { text-align: center; }
     .summary-stat .num {
       font-size: 36px;
@@ -322,7 +323,6 @@
       </div>
     </div>
 
-    <div class="right-panel">
     <!-- PEOPLE OPS -->
     <div class="category">
       <div class="category-title">People Ops</div>
@@ -396,7 +396,7 @@
     </div>
 
     <!-- FINANCE + INTERNAL OPS -->
-    <div class="right-row">
+    <div style="display: flex; flex-direction: column; gap: 28px;">
 
       <div class="category">
         <div class="category-title">Finance</div>
@@ -459,31 +459,28 @@
       </div>
 
     </div>
+  </div>
 
-    <!-- SUMMARY ROW -->
-    <div class="category" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: #2a2a2a; border-radius: 16px; overflow: hidden; padding: 0;">
-      <div class="summary-stat" style="padding: 20px 12px; background: #1a1a1a;">
-        <div class="num green-text">8</div>
-        <div class="label">Working</div>
-      </div>
-      <div class="summary-stat" style="padding: 20px 12px; background: #1a1a1a;">
-        <div class="num yellow-text">10</div>
-        <div class="label">Partial</div>
-      </div>
-      <div class="summary-stat" style="padding: 20px 12px; background: #1a1a1a;">
-        <div class="num red-text">1</div>
-        <div class="label">Not Working</div>
-      </div>
-      <div class="summary-stat" style="padding: 20px 12px; background: #1a1a1a;">
-        <div class="num purple-text">10</div>
-        <div class="label">Needs Decision</div>
-      </div>
-      <div class="summary-stat" style="padding: 20px 12px; background: #1a1a1a;">
-        <div class="num" style="color:#fff">19</div>
-        <div class="label">Total Processes</div>
-      </div>
+  <div class="summary-bar">
+    <div class="summary-stat">
+      <div class="num green-text">8</div>
+      <div class="label">Working</div>
     </div>
-
+    <div class="summary-stat">
+      <div class="num yellow-text">10</div>
+      <div class="label">Partial</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num red-text">1</div>
+      <div class="label">Not Working</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num purple-text">10</div>
+      <div class="label">Needs Decision</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num" style="color:#fff">19</div>
+      <div class="label">Total Processes</div>
     </div>
   </div>
 
