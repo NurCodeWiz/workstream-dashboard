@@ -152,6 +152,28 @@
       display: inline-block;
       max-width: calc(100% - 32px);
     }
+    .owner-row {
+      display: flex;
+      gap: 5px;
+      margin-left: 32px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+    }
+    .owner-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: #0ea5e915;
+      color: #38bdf8;
+      border: 1px solid #0ea5e933;
+    }
+    .owner-label {
+      font-size: 10px;
+      color: #444;
+      margin-left: 32px;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
@@ -178,6 +200,8 @@
         <div class="step-title">AI Scoring</div>
       </div>
       <div class="step-desc">Based on the role they applied for, an AI prompt automatically runs and assigns each candidate a score.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Nur</span></div>
     </div>
 
     <div class="arrow"></div>
@@ -189,6 +213,8 @@
         <div class="step-title">Zoom Screening Decision</div>
       </div>
       <div class="step-desc">Using these scores, we decide whether a candidate should be invited to a Zoom screening.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Nur</span></div>
     </div>
 
     <div class="arrow"></div>
@@ -200,6 +226,8 @@
         <div class="step-title">Zoom Screening</div>
       </div>
       <div class="step-desc">We run Zoom screenings with selected candidates and fill out the role-specific score sheet.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Nur</span></div>
     </div>
 
     <div class="arrow"></div>
@@ -224,6 +252,8 @@
         <div class="step-title">Manager Review</div>
       </div>
       <div class="step-desc">Share the candidate and their evaluation with the hiring manager for that role.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Nur</span></div>
     </div>
 
     <div class="arrow"></div>
@@ -235,6 +265,8 @@
         <div class="step-title">Manager Decision</div>
       </div>
       <div class="step-desc">Based on the manager's feedback, the candidate is either invited to a technical interview or rejected.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Yan</span><span class="owner-tag">Harrison</span></div>
       <div class="note">For AI/ML Researcher role: candidates who pass the phone screen and are liked by the manager are given a take-home task.</div>
     </div>
 
@@ -247,6 +279,8 @@
         <div class="step-title">Technical Interview → 1:1 with Devrim</div>
       </div>
       <div class="step-desc">Candidates who pass the technical interview are invited to a 1:1 with Devrim.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Yan</span><span class="owner-tag">Harrison</span></div>
     </div>
 
     <div class="arrow"></div>
@@ -258,6 +292,8 @@
         <div class="step-title" style="color:#22c55e;">Offer</div>
       </div>
       <div class="step-desc">Based on the final decision, an offer is sent.</div>
+      <div class="owner-label">Owner</div>
+      <div class="owner-row"><span class="owner-tag">Devrim</span><span class="owner-tag">Artia</span></div>
     </div>
 
   </div>
