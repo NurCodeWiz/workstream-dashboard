@@ -9,294 +9,227 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #0f0f0f;
-      color: #f0f0f0;
-      padding: 24px 16px;
       min-height: 100vh;
-    }
-    h1 {
-      text-align: center;
-      font-size: 17px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 24px;
-      letter-spacing: 1px;
-    }
-
-    .flow {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .step {
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 10px;
-      padding: 10px 14px;
-      position: relative;
-    }
-
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #222;
-      border: 1px solid #444;
-      color: #aaa;
-      font-size: 10px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      padding: 32px 16px;
     }
-
-    .step-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #e5e5e5;
-    }
-
-    .step-desc {
-      font-size: 11px;
-      color: #555;
-      margin-top: 4px;
-      margin-left: 32px;
-      line-height: 1.4;
-    }
-
-    .arrow {
-      width: 2px;
-      height: 14px;
-      background: #2a2a2a;
-      margin: 0 auto;
-      position: relative;
-    }
-    .arrow::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 5px solid #2a2a2a;
-    }
-
-    .branch {
-      width: 100%;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    .branch-line {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-    }
-    .branch-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      padding: 1px 8px;
-      border-radius: 20px;
-    }
-    .branch-label.pass {
-      color: #22c55e;
-      background: #22c55e15;
-      border: 1px solid #22c55e33;
-    }
-    .branch-label.fail {
-      color: #ef4444;
-      background: #ef444415;
-      border: 1px solid #ef444433;
-    }
-    .branch-step {
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 11px;
-      color: #aaa;
-      line-height: 1.4;
-    }
-    .branch-step.reject {
-      border-color: #ef444422;
-      color: #ef444466;
-    }
-
-    .note {
-      background: #7c3aed11;
-      border: 1px solid #7c3aed33;
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 10px;
-      color: #a78bfa;
-      margin-left: 32px;
-      margin-top: 4px;
-      line-height: 1.4;
-      display: inline-block;
-      max-width: calc(100% - 32px);
-    }
-    .owner-row {
-      display: flex;
-      gap: 5px;
-      margin-left: 32px;
-      margin-top: 5px;
-      flex-wrap: wrap;
-    }
-    .owner-tag {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 20px;
-      background: #0ea5e915;
-      color: #38bdf8;
-      border: 1px solid #0ea5e933;
-    }
-    .owner-label {
-      font-size: 10px;
-      color: #444;
-      margin-left: 32px;
-      margin-top: 4px;
-    }
+    svg { max-width: 100%; height: auto; }
   </style>
 </head>
 <body>
+<svg viewBox="0 0 900 1360" xmlns="http://www.w3.org/2000/svg" width="900">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#555"/>
+    </marker>
+  </defs>
 
-  <h1>Recruiting Flow</h1>
+  <rect width="900" height="1360" fill="#0f0f0f"/>
 
-  <div class="flow">
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- TITLE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="420" y="28" text-anchor="middle" fill="#666" font-size="13" font-weight="700" letter-spacing="1">RECRUITING FLOW</text>
 
-    <!-- Step 1 -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">1</div>
-        <div class="step-title">Application</div>
-      </div>
-      <div class="step-desc">Candidates apply through the website or LinkedIn. Website applicants are automatically added to Airtable, and LinkedIn candidates are added daily via a Claude script. All applicants are also added to the LuckyHiring app. This way, all candidates are collected in Airtable.</div>
-    </div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- START -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <ellipse cx="420" cy="62" rx="65" ry="28" fill="#252525" stroke="#555" stroke-width="1.5"/>
+  <text x="420" y="67" text-anchor="middle" fill="#aaa" font-size="13" font-style="italic">Start</text>
+  <line x1="420" y1="90" x2="420" y2="110" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 1: Application -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="300" y="111" width="240" height="84" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="133" text-anchor="middle" fill="#d4d4d4" font-size="13" font-weight="600">Application</text>
+  <text x="420" y="152" text-anchor="middle" fill="#888" font-size="11">Website + LinkedIn → Airtable</text>
+  <text x="420" y="168" text-anchor="middle" fill="#666" font-size="10">LinkedIn: Claude script runs daily</text>
+  <text x="420" y="184" text-anchor="middle" fill="#666" font-size="10">All candidates also added to LuckyHiring</text>
+  <line x1="420" y1="195" x2="420" y2="215" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <!-- Step 2 -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">2</div>
-        <div class="step-title">AI Scoring</div>
-      </div>
-      <div class="step-desc">Based on the role they applied for, an AI prompt automatically runs and assigns each candidate a score.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Nur</span></div>
-    </div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 2: AI Scoring -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="300" y="216" width="240" height="60" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="238" text-anchor="middle" fill="#d4d4d4" font-size="13" font-weight="600">AI Scoring</text>
+  <text x="420" y="256" text-anchor="middle" fill="#888" font-size="11">AI scores candidate based on role</text>
+  <!-- owner -->
+  <rect x="552" y="224" width="45" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="574" y="237" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Nur</text>
+  <line x1="420" y1="276" x2="420" y2="296" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- DECISION 1: Invite to screening? -->
+  <!-- diamond center (420, 333), hw=80, hh=37 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <polygon points="420,296 500,333 420,370 340,333" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="328" text-anchor="middle" fill="#d4d4d4" font-size="12">Invite to</text>
+  <text x="420" y="344" text-anchor="middle" fill="#d4d4d4" font-size="12">screening?</text>
+  <!-- yes → down -->
+  <line x1="420" y1="370" x2="420" y2="393" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="404" y="385" fill="#888" font-size="11">yes</text>
+  <!-- no → left rail -->
+  <line x1="340" y1="333" x2="180" y2="333" stroke="#555" stroke-width="1.5"/>
+  <text x="285" y="326" fill="#888" font-size="11">no</text>
 
-    <!-- Step 3 -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">3</div>
-        <div class="step-title">Zoom Screening Decision</div>
-      </div>
-      <div class="step-desc">Using these scores, we decide whether a candidate should be invited to a Zoom screening.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Nur</span></div>
-    </div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 3: Zoom Screening -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="300" y="394" width="240" height="76" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="417" text-anchor="middle" fill="#d4d4d4" font-size="13" font-weight="600">Zoom Screening</text>
+  <text x="420" y="436" text-anchor="middle" fill="#888" font-size="11">Run screening · fill score sheet</text>
+  <text x="420" y="453" text-anchor="middle" fill="#666" font-size="10">Upload recording + feedback to Airtable</text>
+  <!-- owner -->
+  <rect x="552" y="402" width="45" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="574" y="415" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Nur</text>
+  <line x1="420" y1="470" x2="420" y2="490" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- DECISION 2: Performed well? -->
+  <!-- diamond center (420, 527), hw=80, hh=37 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <polygon points="420,490 500,527 420,564 340,527" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="522" text-anchor="middle" fill="#d4d4d4" font-size="12">Performed</text>
+  <text x="420" y="538" text-anchor="middle" fill="#d4d4d4" font-size="12">well?</text>
+  <!-- yes → down -->
+  <line x1="420" y1="564" x2="420" y2="587" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="404" y="579" fill="#888" font-size="11">yes</text>
+  <!-- no → left rail -->
+  <line x1="340" y1="527" x2="180" y2="527" stroke="#555" stroke-width="1.5"/>
+  <text x="285" y="520" fill="#888" font-size="11">no</text>
 
-    <!-- Step 4 with branch -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">4</div>
-        <div class="step-title">Zoom Screening</div>
-      </div>
-      <div class="step-desc">We run Zoom screenings with selected candidates and fill out the role-specific score sheet.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Nur</span></div>
-    </div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 4: Manager Review -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="300" y="588" width="240" height="62" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="611" text-anchor="middle" fill="#d4d4d4" font-size="13" font-weight="600">Manager Review</text>
+  <text x="420" y="630" text-anchor="middle" fill="#888" font-size="11">Share candidate + evaluation</text>
+  <!-- owner -->
+  <rect x="552" y="597" width="45" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="574" y="610" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Nur</text>
+  <line x1="420" y1="650" x2="420" y2="670" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- DECISION 3: Manager Decision -->
+  <!-- diamond center (420, 707), hw=80, hh=37 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <polygon points="420,670 500,707 420,744 340,707" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="702" text-anchor="middle" fill="#d4d4d4" font-size="12">Manager</text>
+  <text x="420" y="718" text-anchor="middle" fill="#d4d4d4" font-size="12">Decision?</text>
+  <!-- yes → down -->
+  <line x1="420" y1="744" x2="420" y2="767" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="404" y="759" fill="#888" font-size="11">yes</text>
+  <!-- no → left rail -->
+  <line x1="340" y1="707" x2="180" y2="707" stroke="#555" stroke-width="1.5"/>
+  <text x="285" y="700" fill="#888" font-size="11">no</text>
+  <!-- owner for this stage -->
+  <rect x="552" y="679" width="130" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="617" y="692" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Yan · Harrison</text>
+  <!-- AI/ML note -->
+  <rect x="522" y="703" width="175" height="32" rx="6" fill="#7c3aed11" stroke="#7c3aed33"/>
+  <text x="609" y="717" text-anchor="middle" fill="#a78bfa" font-size="10">AI/ML role: take-home</text>
+  <text x="609" y="729" text-anchor="middle" fill="#a78bfa" font-size="10">task given before interview</text>
 
-    <div class="branch">
-      <div class="branch-line">
-        <span class="branch-label fail">Didn't perform well</span>
-        <div class="branch-step reject">Upload recording to Airtable → add feedback → mark as rejected</div>
-      </div>
-      <div class="branch-line">
-        <span class="branch-label pass">Performed well</span>
-        <div class="branch-step">Complete score table → move forward</div>
-      </div>
-    </div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 5: Technical Interview → 1:1 with Devrim -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="300" y="768" width="240" height="72" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="792" text-anchor="middle" fill="#d4d4d4" font-size="13" font-weight="600">Technical Interview</text>
+  <text x="420" y="810" text-anchor="middle" fill="#888" font-size="11">→ 1:1 with Devrim</text>
+  <text x="420" y="828" text-anchor="middle" fill="#666" font-size="10">Candidates who pass advance to CEO round</text>
+  <!-- owner -->
+  <rect x="552" y="778" width="130" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="617" y="791" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Yan · Harrison</text>
+  <line x1="420" y1="840" x2="420" y2="860" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 6: Offer -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="300" y="861" width="240" height="60" rx="8" fill="#1c1c1c" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="420" y="884" text-anchor="middle" fill="#d4d4d4" font-size="13" font-weight="600">Offer</text>
+  <text x="420" y="902" text-anchor="middle" fill="#888" font-size="11">Offer sent based on final decision</text>
+  <!-- owner -->
+  <rect x="552" y="869" width="115" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="609" y="882" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Devrim · Artia</text>
+  <line x1="420" y1="921" x2="420" y2="944" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <!-- Step 5 -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">5</div>
-        <div class="step-title">Manager Review</div>
-      </div>
-      <div class="step-desc">Share the candidate and their evaluation with the hiring manager for that role.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Nur</span></div>
-    </div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- END — Hired -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <ellipse cx="420" cy="972" rx="65" ry="28" fill="#1a2e1a" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="420" y="977" text-anchor="middle" fill="#22c55e" font-size="13" font-style="italic" font-weight="600">Hired</text>
 
-    <div class="arrow"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LEFT REJECTION RAIL -->
+  <!-- x=180, from y=333 (D1) down to y=1095 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <line x1="180" y1="333" x2="180" y2="1095" stroke="#555" stroke-width="1.5"/>
+  <!-- D2 and D3 connections to rail already drawn -->
 
-    <!-- Step 6 with branch -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">6</div>
-        <div class="step-title">Manager Decision</div>
-      </div>
-      <div class="step-desc">Based on the manager's feedback, the candidate is either invited to a technical interview or rejected.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Yan</span><span class="owner-tag">Harrison</span></div>
-      <div class="note">For AI/ML Researcher role: candidates who pass the phone screen and are liked by the manager are given a take-home task.</div>
-    </div>
+  <!-- Rail → Reject box -->
+  <line x1="180" y1="1095" x2="155" y2="1095" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ── Reject candidate box ── -->
+  <rect x="15" y="1074" width="170" height="44" rx="8" fill="#1c1c1c" stroke="#ef444455" stroke-width="1.5"/>
+  <text x="100" y="1094" text-anchor="middle" fill="#d4d4d4" font-size="12">Reject candidate</text>
+  <text x="100" y="1109" text-anchor="middle" fill="#888" font-size="10">(update Airtable)</text>
+  <!-- rejected badge -->
+  <rect x="192" y="1081" width="72" height="20" rx="4" fill="#ef444418" stroke="#ef444455"/>
+  <text x="228" y="1095" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600">+ rejected</text>
 
-    <!-- Step 7 -->
-    <div class="step">
-      <div class="step-header">
-        <div class="step-num">7</div>
-        <div class="step-title">Technical Interview → 1:1 with Devrim</div>
-      </div>
-      <div class="step-desc">Candidates who pass the technical interview are invited to a 1:1 with Devrim.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Yan</span><span class="owner-tag">Harrison</span></div>
-    </div>
+  <line x1="100" y1="1118" x2="100" y2="1140" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <div class="arrow"></div>
+  <!-- ── Send rejection email box ── -->
+  <rect x="15" y="1141" width="170" height="44" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="100" y="1161" text-anchor="middle" fill="#d4d4d4" font-size="12">Send rejection email</text>
+  <!-- owner -->
+  <rect x="50" y="1168" width="45" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="72" y="1181" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Nur</text>
 
-    <!-- Step 8 -->
-    <div class="step" style="border-color: #22c55e33;">
-      <div class="step-header">
-        <div class="step-num" style="border-color:#22c55e55; color:#22c55e;">8</div>
-        <div class="step-title" style="color:#22c55e;">Offer</div>
-      </div>
-      <div class="step-desc">Based on the final decision, an offer is sent.</div>
-      <div class="owner-label">Owner</div>
-      <div class="owner-row"><span class="owner-tag">Devrim</span><span class="owner-tag">Artia</span></div>
-    </div>
+  <!-- Arrow rejection email → END (rejected) -->
+  <line x1="100" y1="1185" x2="100" y2="1238" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
 
-  </div>
+  <!-- END — Rejected -->
+  <ellipse cx="100" cy="1266" rx="65" ry="28" fill="#2a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="100" y="1271" text-anchor="middle" fill="#888" font-size="13" font-style="italic">End</text>
 
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- OWNER LEGEND (right column) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="720" y="120" fill="#666" font-size="11" font-weight="700" letter-spacing="0.5">OWNERS</text>
+
+  <rect x="720" y="132" width="45" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="742" y="145" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Nur</text>
+  <text x="772" y="145" fill="#555" font-size="10">Operations</text>
+
+  <rect x="720" y="158" width="130" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="785" y="171" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Yan · Harrison</text>
+  <text x="720" y="188" fill="#555" font-size="10">Manager review</text>
+
+  <rect x="720" y="196" width="115" height="18" rx="9" fill="#0ea5e912" stroke="#0ea5e930"/>
+  <text x="777" y="209" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">Devrim · Artia</text>
+  <text x="720" y="226" fill="#555" font-size="10">Final offer</text>
+
+  <line x1="720" y1="240" x2="860" y2="240" stroke="#2a2a2a" stroke-width="1"/>
+
+  <text x="720" y="262" fill="#666" font-size="11" font-weight="700" letter-spacing="0.5">PATH GUIDE</text>
+  <line x1="720" y1="276" x2="740" y2="276" stroke="#555" stroke-width="1.5"/>
+  <text x="748" y="280" fill="#555" font-size="10">yes → continue</text>
+  <line x1="720" y1="294" x2="740" y2="294" stroke="#555" stroke-width="1.5"/>
+  <text x="748" y="298" fill="#555" font-size="10">no → reject rail (left)</text>
+
+  <line x1="720" y1="312" x2="860" y2="312" stroke="#2a2a2a" stroke-width="1"/>
+
+  <text x="720" y="334" fill="#666" font-size="11" font-weight="700" letter-spacing="0.5">SHAPES</text>
+  <ellipse cx="740" cy="354" rx="18" ry="11" fill="none" stroke="#555" stroke-width="1.2"/>
+  <text x="766" y="358" fill="#555" font-size="10">Start / End</text>
+  <rect x="722" y="372" width="36" height="20" rx="4" fill="none" stroke="#555" stroke-width="1.2"/>
+  <text x="766" y="386" fill="#555" font-size="10">Process step</text>
+  <polygon points="740,404 758,416 740,428 722,416" fill="none" stroke="#555" stroke-width="1.2"/>
+  <text x="766" y="420" fill="#555" font-size="10">Decision</text>
+
+</svg>
 </body>
 </html>
