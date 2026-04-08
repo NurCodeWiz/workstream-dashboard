@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recruiting Flow</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+    h1 {
+      text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .step {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 10px 14px;
+      position: relative;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #222;
+      border: 1px solid #444;
+      color: #aaa;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e5e5;
+    }
+
+    .step-desc {
+      font-size: 11px;
+      color: #555;
+      margin-top: 4px;
+      margin-left: 32px;
+      line-height: 1.4;
+    }
+
+    .arrow {
+      width: 2px;
+      height: 14px;
+      background: #2a2a2a;
+      margin: 0 auto;
+      position: relative;
+    }
+    .arrow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid #2a2a2a;
+    }
+
+    .branch {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .branch-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .branch-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      padding: 1px 8px;
+      border-radius: 20px;
+    }
+    .branch-label.pass {
+      color: #22c55e;
+      background: #22c55e15;
+      border: 1px solid #22c55e33;
+    }
+    .branch-label.fail {
+      color: #ef4444;
+      background: #ef444415;
+      border: 1px solid #ef444433;
+    }
+    .branch-step {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    .branch-step.reject {
+      border-color: #ef444422;
+      color: #ef444466;
+    }
+
+    .note {
+      background: #7c3aed11;
+      border: 1px solid #7c3aed33;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 10px;
+      color: #a78bfa;
+      margin-left: 32px;
+      margin-top: 4px;
+      line-height: 1.4;
+      display: inline-block;
+      max-width: calc(100% - 32px);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Recruiting Flow</h1>
+
+  <div class="flow">
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Application</div>
+      </div>
+      <div class="step-desc">Candidates apply through the website or LinkedIn. Website applicants are automatically added to Airtable, and LinkedIn candidates are added daily via a Claude script. All applicants are also added to the LuckyHiring app. This way, all candidates are collected in Airtable.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">AI Scoring</div>
+      </div>
+      <div class="step-desc">Based on the role they applied for, an AI prompt automatically runs and assigns each candidate a score.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Zoom Screening Decision</div>
+      </div>
+      <div class="step-desc">Using these scores, we decide whether a candidate should be invited to a Zoom screening.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 4 with branch -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Zoom Screening</div>
+      </div>
+      <div class="step-desc">We run Zoom screenings with selected candidates and fill out the role-specific score sheet.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <div class="branch">
+      <div class="branch-line">
+        <span class="branch-label fail">Didn't perform well</span>
+        <div class="branch-step reject">Upload recording to Airtable → add feedback → mark as rejected</div>
+      </div>
+      <div class="branch-line">
+        <span class="branch-label pass">Performed well</span>
+        <div class="branch-step">Complete score table → move forward</div>
+      </div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Manager Review</div>
+      </div>
+      <div class="step-desc">Share the candidate and their evaluation with the hiring manager for that role.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 6 with branch -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Manager Decision</div>
+      </div>
+      <div class="step-desc">Based on the manager's feedback, the candidate is either invited to a technical interview or rejected.</div>
+      <div class="note">For AI/ML Researcher role: candidates who pass the phone screen and are liked by the manager are given a take-home task.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 7 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">7</div>
+        <div class="step-title">Technical Interview → 1:1 with Devrim</div>
+      </div>
+      <div class="step-desc">Candidates who pass the technical interview are invited to a 1:1 with Devrim.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <!-- Step 8 -->
+    <div class="step" style="border-color: #22c55e33;">
+      <div class="step-header">
+        <div class="step-num" style="border-color:#22c55e55; color:#22c55e;">8</div>
+        <div class="step-title" style="color:#22c55e;">Offer</div>
+      </div>
+      <div class="step-desc">Based on the final decision, an offer is sent.</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
